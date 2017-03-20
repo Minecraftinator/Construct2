@@ -13,8 +13,14 @@
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
     </used-plugins>
-    <used-behaviors />
+    <used-behaviors>
+        <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="Platform" version="1">Platform</behavior>
+        <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
+        <behavior author="Scirra" id="solid" version="1">Solid</behavior>
+    </used-behaviors>
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
@@ -44,6 +50,14 @@
     <object-folder>
         <object-type name="Player" sid="661953208439879">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="ScrollTo" sid="458423221479398">
+                    <behavior id="scrollto" />
+                </behavior-type>
+                <behavior-type name="Platform" sid="217335208412962">
+                    <behavior id="Platform" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="816874577848850" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Student\Desktop\thIP2Z136U.jpg" />
@@ -98,27 +112,64 @@
         </object-type>
         <object-type name="Block" sid="396629892691457">
             <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="CanGrapple" sid="977503225774445" type="boolean" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Solid" sid="968696781734523">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="260168298940272" speed="5">
-                    <frame duration="1" hotspotX="-4.05" hotspotY="1.78049" original-source="C:\Users\Student\Desktop\Square-Block-Tilesets-for-Platformer-Games-590.jpg" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.512195" original-source="C:\Users\Student\Desktop\Square-Block-Tilesets-for-Platformer-Games-590.jpg" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Spikes" sid="586044469533158">
+        <object-type name="Spike" sid="586044469533158">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Solid" sid="689699513538858">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="290670578211915" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Student\Desktop\thM10CHIQ2.jpg" />
+                    <frame duration="1" hotspotX="2.05" hotspotY="0.5" original-source="C:\Users\Student\Desktop\thM10CHIQ2.jpg" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Sprite" sid="164057415894171">
+        <object-type name="GrappleHook" sid="164057415894171">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Bullet" sid="878102840296648">
+                    <behavior id="Bullet" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="378760108368669" speed="5">
-                    <frame duration="1" hotspotX="3.57385" hotspotY="-1.01818" original-source="C:\Users\Student\Desktop\vector-highly-stylized-claw-machine-claw-set.jpg" />
+                    <frame duration="1" hotspotX="-0.65873" hotspotY="0.5" original-source="C:\Users\Student\Desktop\vector-highly-stylized-claw-machine-claw-set.jpg">
+                        <image-point name="Imagepoint 1" x="0.00793651" y="0.5" />
+                        <collision-poly>
+                            <point x="0.00793654" y="0.994792" />
+                            <point x="0.00793654" y="0.00520833" />
+                            <point x="0.992063" y="0.00520833" />
+                            <point x="0.992063" y="0.994792" />
+                        </collision-poly>
+                    </frame>
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Rope" sid="722349784933498">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="237524626112897" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.833333" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="LeftClickHere" sid="835275153697842">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families />
@@ -127,7 +178,8 @@
         <layout>GrappleHook.xml</layout>
     </layout-folder>
     <event-folder>
-        <event-sheet>Event sheet 1.xml</event-sheet>
+        <event-sheet>esGrappleHook.xml</event-sheet>
+        <event-sheet>esStartMenu.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Mouse" uid="4" />
